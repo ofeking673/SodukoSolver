@@ -3,13 +3,12 @@ public class ConsoleIO
 {
     public ConsoleIO() {}
     
-    public string ReadInput() {
+    public static string ReadInput() {
         return Console.ReadLine() 
             ?? throw new InvalidOperationException("No input provided.");
     }
 
-    public Board parseBoard() {
-        string boardInput = ReadInput();
+    public static int[,] parseBoard(string boardInput) {
         
         if (boardInput.Length != 81) {
             throw new ArgumentException("Input length must be exactly 81 bytes.");
@@ -30,8 +29,7 @@ public class ConsoleIO
             grid[row, col] = ch - '0';
         }
 
-        return new Board(grid); 
-        // If the input has logic issues, the board enforces all rules and will throw an exception
+        return grid;
     }
         
     public static void PrintBoard(IBoard board)
