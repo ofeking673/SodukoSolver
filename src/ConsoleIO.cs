@@ -4,12 +4,16 @@ public class ConsoleIO
     public ConsoleIO() {}
     
     public string ReadInput() {
-        return System.Console.ReadLine();
+        return Console.ReadLine() 
+            ?? throw new InvalidOperationException("No input provided.");
     }
 
     public Board parseBoard() {
         string boardInput = ReadInput();
-
+        
+        if (boardInput.Length != 81) {
+            throw new ArgumentException("Input length must be exactly 81 bytes.");
+        }
     
         int [,] grid = new int[9,9];
 
@@ -28,13 +32,29 @@ public class ConsoleIO
 
         return new Board(grid); 
         // If the input has logic issues, the board enforces all rules and will throw an exception
-    } 
+    }
+        
+    public static void PrintBoard(IBoard board)
+    {
+        const int SIZE = 9;
 
-    public void PrintBoard(IBoard board) {
-        for(int i = 0; i < 9; i++) {
-            for(int j = 0; j < 9; j++) 
-                Console.Write(board.GetCell(i, j));
-            Console.WriteLine();
+        for (int r = 0; r < SIZE; r++)
+        {
+            if (r % 3 == 0)
+                Console.WriteLine("+-------+-------+-------+");
+
+            for (int c = 0; c < SIZE; c++)
+            {
+                if (c % 3 == 0)
+                    Console.Write("| ");
+
+                int value = board.GetCell(r, c);
+                Console.Write(value == 0 ? ". " : value + " ");
+            }
+
+            Console.WriteLine("|");
         }
+
+        Console.WriteLine("+-------+-------+-------+");
     }
 }
