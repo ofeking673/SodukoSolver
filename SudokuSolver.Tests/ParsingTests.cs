@@ -15,6 +15,23 @@ public class ParsingTests
         Assert.Throws<ArgumentException>(() => new Board(grid));
     }
 
+    [Theory]
+    [InlineData("12345678X000000000000000000000000000000000000000000000000000000000000000000000000")]
+    [InlineData("12345678000000000000000000000000000000000000000000000000000l000000000000000000000")]
+    [InlineData("12345678000000000000000000000000000000000000000000000000000000000000000000000000j")]
+    public void Char_In_Board_ThrowException(string invalid)
+    {
+        Assert.Throws<ArgumentException>(() => ConsoleIO.parseBoard(invalid));
+    }
 
+    
+    [Theory]
+    [InlineData("1234567890000000000000000000000000000000000000000000000000000000000000")] // Too short
+    [InlineData("1234567890000000000000000000000000000000000000000000000000000000000000000000000000000")] // Too long
+    [InlineData("")] // Empty board
+    public void Invalid_Length_Board_ThrowsException(string invalid) 
+    {
+        Assert.Throws<ArgumentException>(() => ConsoleIO.parseBoard(invalid));
+    }
     
 }
