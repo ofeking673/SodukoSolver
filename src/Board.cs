@@ -11,10 +11,10 @@ public class Board : IBoard
   private readonly int[] boxMask = new int[SIZE];
 
 
-  public Board(int[][] input) {
+  public Board(int[,] input) {
     for (int r = 0; r < SIZE; r++) {
       for (int c = 0; c < SIZE; c++) {
-        int val = input[r][c];
+        int val = input[r,c];
         if(val != 0) {
           PlaceInitialValue(r, c, val);
         }
