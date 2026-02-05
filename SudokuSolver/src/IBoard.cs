@@ -5,6 +5,6 @@ public interface IBoard
   void SetCell(int row, int col, int val);
   void ClearCell(int row, int col);
 
-  int GetCandidateMask(int row, int col);
+  List<int> GetPossibleCandidates(int row, int col);
   bool IsSolved { get; }
 }
