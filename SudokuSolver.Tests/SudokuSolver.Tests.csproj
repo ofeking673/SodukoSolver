@@ -22,8 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SudokuSolver\SudokuSolver.csproj" />
-
-:x
-
+  </ItemGroup>
 
 </Project>
