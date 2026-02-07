@@ -28,5 +28,5 @@ while (true)
 string FormatStopwatch(Stopwatch sw)
 {
     TimeSpan ts = sw.Elapsed;
-    return $"{ts.Minutes:D2}:{ts.Seconds:D2}.{ts.Milliseconds:D4}";
+    return ts.ToString(@"mm\:ss\.ffff");
 }
