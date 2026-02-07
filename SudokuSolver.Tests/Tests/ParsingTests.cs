@@ -12,7 +12,7 @@ public class ParsingTests
     public void Constructor_Invalid_Board_ThrowsException(string invalid)
     {
         int [,] grid = ConsoleIO.parseBoard(invalid);
-        Assert.Throws<ArgumentException>(() => new Board(grid));
+        Assert.Throws<ArgumentException>(() => new BitmaskBoard(grid));
     }
 
     [Theory]
