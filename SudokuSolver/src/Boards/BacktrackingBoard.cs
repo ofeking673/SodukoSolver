@@ -9,14 +9,28 @@ public class BacktrackingBoard : IBoard
           for (int c = 0; c < SIZE; c++)
               cells[r, c] = initial[r, c];
   }
-
+  
+  /// <summary>Get the cell at the specified position</summary>
+  /// <param name="row">The row of the requested cell</param>
+  /// <param name="col">The column of the requested cell</param>
+  /// <returns>The value of the cell</returns>
   public int GetCell(int row, int col) => cells[row, col];
 
+  /// <summary>Set the cell at the specified position to a value</summary>
+  /// <param name="row">The row of the requested cell</param>
+  /// <param name="col">The column of the requested cell</param>
+  /// <param name="val">The new value for the cell to be set to</param>
   public void SetCell(int row, int col, int val) => cells[row, col] = val;
-
+ 
+  /// <summary>Clear the value of the cell at the specified position</summary>
+  /// <param name="row">The row of the requested cell</param>
+  /// <param name="col">The column of the requested cell</param>
   public void ClearCell(int row, int col) => cells[row, col] = 0;
 
-
+  /// <summary>Get a list of all possible candidates</summary>
+  /// <param name="row">The cell's row</param>
+  /// <param name="col">The cell's column</param>
+  /// <returns>A list containing the candidates in an integer representation</returns>
   public List<int> GetPossibleCandidates(int row, int col)
   {
     var candidates = new List<int>();
@@ -33,16 +47,19 @@ public class BacktrackingBoard : IBoard
 
  
   // Check if val can be placed at (row, col)
+  /// <summary>Check whether a value can be placed at (row, col)</summary>
+  /// <param name="row">A row for the cell</param>
+  /// <param name="col">A column for the cell</param>
+  /// <param name="val">The new value to check for</param>
+  /// <returns>A boolean value representing whether the value is legal or not</returns>
   private bool IsValid(int row, int col, int val)
   {
-    // Check row and column
     for (int i = 0; i < SIZE; i++)
     {
       if (cells[row, i] == val) return false;
       if (cells[i, col] == val) return false;
     }
 
-    // Check 3x3 box
     int startRow = (row / 3) * 3;
     int startCol = (col / 3) * 3;
 
@@ -54,6 +71,8 @@ public class BacktrackingBoard : IBoard
     return true;
   }
 
+  /// <summary>Check whether the board is solved or not</summary>
+  /// <returns>A boolean value representing the board state</returns>
   public bool IsSolved
   {
     get
