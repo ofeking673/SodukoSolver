@@ -3,7 +3,11 @@ using System.Numerics;
 public class BitmaskSolver : ISolver {
   
   private const int SIZE = 9;
-
+  
+  /// <summary>Check if the board is able to be solved by this solver type</summary>
+  /// <param name="board">The board instance</param>
+  /// <returns>Boolean value representing whether the board was solved</returns>
+  /// <exception cref="ArgumentException">Thrown if the board is not of type IBitmaskBoard</exception>
   public bool Solve(IBoard board)
   {
     if (board is not IBitmaskBoard bm)
@@ -12,6 +16,9 @@ public class BitmaskSolver : ISolver {
     return SolveBitmaskRecursive(bm);
   }
 
+  /// <summary></summary>
+  /// <param name="board">The board to solve</param>
+  /// <returns>Boolean value representing whether the board was solved or not</returns>
   private bool SolveBitmaskRecursive(IBitmaskBoard board) 
   {
     int bestRow = -1, bestCol = -1;
@@ -67,7 +74,10 @@ public class BitmaskSolver : ISolver {
 
     return false;
   }
-
+  
+  /// <summary>Transforms the bitmask bit into the digit</summary>
+  /// <param name="bit">The bit to transform</param>
+  /// <returns>The bit index, AKA the number</returns>
   private int BitToDigit(int bit) {
     int digit = 1;
     while ((bit >>= 1) != 0) {
