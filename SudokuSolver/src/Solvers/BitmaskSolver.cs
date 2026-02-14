@@ -79,10 +79,6 @@ public class BitmaskSolver : ISolver {
   /// <param name="bit">The bit to transform</param>
   /// <returns>The bit index, AKA the number</returns>
   private int BitToDigit(int bit) {
-    int digit = 1;
-    while ((bit >>= 1) != 0) {
-      digit++;
-    }
-    return digit;
+    return BitOperations.TrailingZeroCount((uint)bit) + 1; 
   }
 }
