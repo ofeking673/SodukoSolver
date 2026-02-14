@@ -1,6 +1,6 @@
 # Sudoku Solver
 
-A high-performance Sudoku solver written in C# (.NET 8.0) that implements multiple solving algorithms with optimized data structures.
+A high-performance Sudoku solver written in C# (.NET 10.0) that implements multiple solving algorithms with optimized data structures.
 
 ## Features
 
@@ -15,7 +15,7 @@ A high-performance Sudoku solver written in C# (.NET 8.0) that implements multip
 - **Factory Pattern**: Automatically selects the appropriate solver based on board type
 
 - **Performance Optimized**: 
-  - Solves 100 puzzles in under 1 second
+  - Solves all types of puzzles in under 1 second
   - Uses bitwise operations for efficient candidate management
   - Implements "minimum remaining values" heuristic for faster solving
 
@@ -143,7 +143,7 @@ The project includes:
 
 ## Requirements
 
-- .NET 10.0 SDK or later
+- .NET 10.0 SDK
 - Compatible with Windows, macOS, and Linux
 
 ## Performance
@@ -163,3 +163,4 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 ## Author
 
 Created by [ofeking673](https://github.com/ofeking673)
+
