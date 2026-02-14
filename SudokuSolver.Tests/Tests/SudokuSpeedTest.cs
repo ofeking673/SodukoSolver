@@ -20,7 +20,7 @@ public class SudokuSpeedTest
     sw.Start();
     solver.Solve(board);
     sw.Stop();
-    
+    Console.WriteLine($"Time taken: {sw.Elapsed.TotalSeconds} seconds - ({input})");
     return sw.Elapsed.TotalSeconds < 1;
   }
 
@@ -29,7 +29,7 @@ public class SudokuSpeedTest
   [Fact]
   public void Sudoku_Solve_Time()
   {
-     var puzzles = File.ReadLines("Source_Files/100_puzzles.txt")
+     var puzzles = File.ReadLines("Source_Files/17_clue.txt")
        .Where(line => !string.IsNullOrWhiteSpace(line))
        .Select(line => Solved_Under_1_Second(line))
        .ToArray();
