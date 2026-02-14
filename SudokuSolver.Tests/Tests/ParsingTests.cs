@@ -5,6 +5,8 @@ using Xunit;
 
 public class ParsingTests
 {
+    /// <summary>Tests that the constructor throws an exception when given an invalid board.</summary>
+    /// <param name="invalid">A string representation of an invalid Sudoku board.</param>
     [Theory]
     [InlineData("112345678900000000000000000000000000000000000000000000000000000000000000000000000")] // Duplicate 1 in first row
     [InlineData("123456789123000000000000000000000000000000000000000000000000000000000000000000000")] // Duplicate 1 in first col
@@ -15,6 +17,8 @@ public class ParsingTests
         Assert.Throws<ArgumentException>(() => new BitmaskBoard(grid));
     }
 
+    /// <summary>Tests that the constructor throws an exception when given a board with invalid characters.</summary>
+    /// <param name="invalid">A string representation of a Sudoku board with invalid characters.</
     [Theory]
     [InlineData("12345678X000000000000000000000000000000000000000000000000000000000000000000000000")]
     [InlineData("12345678000000000000000000000000000000000000000000000000000l000000000000000000000")]
@@ -25,6 +29,8 @@ public class ParsingTests
     }
 
     
+    /// <summary>Tests that the constructor throws an exception when given a board with invalid length.</summary>
+    /// <param name="invalid">A string representation of a Sudoku board with invalid length.</param>
     [Theory]
     [InlineData("1234567890000000000000000000000000000000000000000000000000000000000000")] // Too short
     [InlineData("1234567890000000000000000000000000000000000000000000000000000000000000000000000000000")] // Too long
