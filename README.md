@@ -37,9 +37,11 @@ SudokuSolver/
 │           ├── BitmaskSolver.cs  # Optimized solver using bitwise operations
 │           └── BacktrackSolver.cs    # Classic backtracking solver
 └── SudokuSolver.Tests/           # Unit and performance tests
-    └── Tests/
-        ├── ParsingTests.cs       # Input validation tests
-        └── SudokuSpeedTest.cs    # Performance benchmarks
+    ├── Tests/
+    │   ├── ParsingTests.cs       # Input validation tests
+    │   └── SudokuSpeedTest.cs    # Performance benchmarks
+    └── Source_Files/
+        └── 17_clue.txt      # Sample puzzles for testing
 ```
 
 ## Usage
@@ -54,7 +56,7 @@ cd SudokuSolver
 
 2. Build and run:
 ```bash
-dotnet run --project SudokuSolver
+dotnet run --project SudokuSolver -c Release
 ```
 
 3. Enter a Sudoku puzzle as an 81-character string (row by row, use `0` for empty cells):
@@ -102,7 +104,7 @@ Original board:
 | 6 9 5 | 4 1 7 | 3 8 2 |
 +-------+-------+-------+
 Solve time:
-00:00.0023
+00:00.0008
 ```
 
 ## Algorithm Details
@@ -130,7 +132,7 @@ Classic recursive backtracking with:
 Run the test suite:
 
 ```bash
-dotnet test
+dotnet test -c Release
 ```
 
 The project includes:
@@ -141,13 +143,13 @@ The project includes:
 
 ## Requirements
 
-- .NET 8.0 SDK or later
+- .NET 10.0 SDK or later
 - Compatible with Windows, macOS, and Linux
 
 ## Performance
 
 - Solves typical puzzles in milliseconds
-- Passes benchmark: 100 puzzles solved in under 1 second
+- Passes benchmark: 49150 tests pass in average of 0.0082 seconds per puzzle
 - Optimized for hard/evil difficulty puzzles
 
 ## License
